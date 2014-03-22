@@ -29,12 +29,55 @@ class I4web_Portfolio_Meta {
 		'priority' => 'high',
 		'fields' => array(
 			array(
-			   'name' => __('Classifications', 'sern'),
-			   'desc' => __('Type the classifications of your project. i.e. Java | Puzzle | Android', 'sern'),
-			   'id' => $prefix . 'classification',
+			   'name' => __('Github Repo Title', 'sern'),
+			   'desc' => __('Type the title of your repository as it appears on Github. i.e. serneum-project', 'sern'),
+			   'id' => $prefix . 'git_repo_title',
 			   'type' => 'text',
 			   'std' => ''
-			)					
+			),
+			array(
+			   'name' => __('Project Stat Title - #1', 'sern'),
+			   'desc' => __('Type the name of your custom stat. Keep it short. 1 or 2 short words', 'sern'),
+			   'id'   => $prefix .'stat_one_title',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+			array(
+			   'name' => __('Project Stat - #1', 'sern'),
+			   'desc' => __('Enter the number for your statistic', 'sern'),
+			   'id'   => $prefix .'stat_one',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+			array(
+			   'name' => __('Project Stat Title - #2', 'sern'),
+			   'desc' => __('Type the name of your custom stat. Keep it short. 1 or 2 short words', 'sern'),
+			   'id'   => $prefix .'stat_two_title',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+			array(
+			   'name' => __('Project Stat - #2', 'sern'),
+			   'desc' => __('Enter the number for your statistic', 'sern'),
+			   'id'   => $prefix .'stat_two',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+			array(
+			   'name' => __('Project Stat Title - #3', 'sern'),
+			   'desc' => __('Type the name of your custom stat. Keep it short. 1 or 2 short words', 'sern'),
+			   'id'   => $prefix .'stat_three_title',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+						array(
+			   'name' => __('Project Stat - #3', 'sern'),
+			   'desc' => __('Enter the number for your statistic', 'sern'),
+			   'id'   => $prefix .'stat_three',
+			   'type' => 'text',
+			   'std'  => ''
+			),
+																					
 			
 		)
 	); //end Meta Boxes Array
@@ -147,6 +190,8 @@ function i4_save_data_endorsement($post_id) {
 	foreach ($meta_box_endorsement['fields'] as $field) {
 		$old = get_post_meta($post_id, $field['id'], true);
 		$new = $_POST[$field['id']];
+		
+		
  
 		if ($new && $new != $old) {
 			update_post_meta($post_id, $field['id'], stripslashes(htmlspecialchars($new)));

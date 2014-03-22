@@ -65,7 +65,7 @@
         'public' => true,
         'has_archive' => true,
         'capability_type' => 'post'
-    );  
+    );  	
     register_post_type( 'i4web_portfolio', $args );//max 20 character cannot contain capital letters and spaces	
 		
 	}
@@ -102,7 +102,13 @@
 	}
 
 	function i4web_custom_tags() {
+		
+		//Rewrite the URL of a CPT to look pretty. i.e. Portfolio/Games/Project-name 
 		add_rewrite_rule("^portfolio/([^/]+)/([^/]+)/?",'index.php?post_type=i4web_portfolio&type=$matches[1]&i4web_portfolio=$matches[2]','top');
+		
+		//Rewrite the URL of a CPT Taxonomy to look pretty. i.e. Portfolio/Games
+		add_rewrite_rule("^portfolio/([^/]+)/?",'index.php?type=$matches[1]','top');
+		
 		
 	}
 	
